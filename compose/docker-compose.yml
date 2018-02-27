@@ -5,7 +5,6 @@ services:
     image: ppouliot/syncthing-windowsnanoserver
     deploy:
       mode: global
-    restart: always
     ports:
       - "8384:8384"
       - "22000:22000"
