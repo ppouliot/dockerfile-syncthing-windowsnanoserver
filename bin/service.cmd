@@ -1,0 +1,1 @@
+docker service create --name syncthings --mode global --publish mode=host,published=8384,target=8384 --publish mode=host,published=22000,target=22000 --publish mode=host,published=21027,target=21027 --mount type=bind,src="c:/syncthing/data",dst="c:/syncthing/data" --mount type=bind,src="c:/syncthing/config",dst="c:/syncthing/config" ppouliot/syncthing-windowsnanoserver:0.0.2
