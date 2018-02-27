@@ -1,1 +1,1 @@
-docker run -d --name syncthing -v c:/syncthing/data:c:/syncthing/data -v c:/syncthing/config:c:/syncthing/config -p 8384:8384 -p 22000:22000 -p 21027:21027/udp ppouliot/syncthing-windowsnanoserver:0.0.2
+docker run -d --name syncthing -v c:/syncthing/data:c:/syncthing/data -v c:/syncthing/config:c:/syncthing/config -v c:/jenkins:c:/jenkins -p 8384:8384 -p 22000:22000 -p 21027:21027/udp ppouliot/syncthing-windowsnanoserver:0.0.2
