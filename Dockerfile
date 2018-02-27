@@ -14,9 +14,10 @@ RUN \
 RUN \
     Remove-Item -Path c:\syncthing-windows-amd64.zip -Confirm:$False; \
     Rename-Item -Path c:\syncthing-windows-amd64-v$env:SYNCTHING_VERSION -NewName syncthing 
-RUN $newPath = ('C:\syncthing;{0}' -f $env:PATH); \
-        Write-Host ('Updating PATH: {0}' -f $newPath); \
-        setx /M PATH $newPath;
+RUN \
+    $newPath = ('C:\syncthing;{0}' -f $env:PATH); \
+    Write-Host ('Updating PATH: {0}' -f $newPath); \
+    setx /M PATH $newPath;
 RUN @('c:/syncthing','c:/syncthing/data','c:/syncthing/config')| foreach { New-Item -Path $_ -ItemType Directory -Force }
 VOLUME c:/syncthing/config
 VOLUME c:/syncthing/data
