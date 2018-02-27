@@ -14,4 +14,4 @@ A [Dockerfile](./Dockerfile.windowsservercore) for installing SyncThing via Choc
 The latest Package available via Chocolatey Repositories is installed and executed with a data Volume at c:\syncthing\data.
 
 ## Docker-compose.yml
-A [docker-compose.yml](./docker-compose.yml) file exists and can be used to run the container as a service.
+A Build [docker-compose.yml](./docker-compose.yml) and a RUN [docker-compose.yml](./compose/docker-compose.yml) file exists for the build and run state of the container.
