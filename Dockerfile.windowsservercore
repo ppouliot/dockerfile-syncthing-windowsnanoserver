@@ -14,9 +14,9 @@ RUN \
     refreshenv ;
 RUN @('c:/syncthing','c:/syncthing/data','c:/syncthing/config')| foreach { New-Item -Path $_ -ItemType Directory -Force }
 
-VOLUME c:\\syncthing\\config
-VOLUME c:\\syncthing\\data
+VOLUME c:/syncthing/config
+VOLUME c:/syncthing/data
 EXPOSE 8384 22000 21027/UDP
-RUN c:\\ProgramData\\chocolatey\\bin\\syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -generate=c:\\syncthing\\config -home=c:\\syncthing\\config
-ENTRYPOINT c:\\ProgramData\\chocolatey\\bin\\syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -home=c:\\syncthing\\config
+RUN c:/ProgramData/chocolatey/bin/syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -generate=c:/syncthing/config -home=c:/syncthing/config
+ENTRYPOINT c:/ProgramData/chocolatey/bin/syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -home=c:/syncthing/config
 

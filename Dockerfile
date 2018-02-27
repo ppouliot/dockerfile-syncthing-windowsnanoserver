@@ -20,9 +20,9 @@ RUN $newPath = ('C:\syncthing;{0}' -f $env:PATH); \
         Write-Host ('Updating PATH: {0}' -f $newPath); \
         setx /M PATH $newPath;
 RUN @('c:/syncthing','c:/syncthing/data','c:/syncthing/config')| foreach { New-Item -Path $_ -ItemType Directory -Force }
-VOLUME c:\\syncthing\\config
-VOLUME c:\\syncthing\\data
+VOLUME c:/syncthing/config
+VOLUME c:/syncthing/data
 EXPOSE 8384 22000 21027/UDP
-RUN c:\\syncthing\\syncthing.exe -no-console -no-browser -generate=c:\\syncthing\\config -home=c:\\syncthing\\config
-ENTRYPOINT c:\\syncthing\\syncthing.exe -no-console -no-browser -home=c:\\syncthing\\config
+RUN c:/syncthing/syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -generate=c:/syncthing/config -home=c:/syncthing/config
+ENTRYPOINT c:/syncthing/syncthing.exe -no-console -no-browser -gui-address=0.0.0.0 -home=c:/syncthing/config
 
