@@ -10,5 +10,5 @@ services:
       - "22000:22000"
       - "21027:21027/udp"
     volumes:
-      - "c:\\syncthing\\config:c:\\syncthing\\config"
-      - "c:\\syncthing\\data:c:\\syncthing\\data"
+      - "c:/syncthing/config:c:/syncthing/config"
+      - "c:/syncthing/data:c:/syncthing/data"
