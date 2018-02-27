@@ -3,6 +3,8 @@ version '3'
 services:
   syncthing:
     image: ppouliot/syncthing-windowsnanoserver
+    deploy:
+      replicas: 2
     restart: always
     ports:
       - "8384:8384"
