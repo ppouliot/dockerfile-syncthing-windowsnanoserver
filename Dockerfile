@@ -7,7 +7,6 @@ ENV all_proxy ""
 COPY VERSION VERSION
 COPY Dockerfile Dockerfile
 RUN Write-Host ('Downloading {0} ...' -f $env:SYNCTHING_DOWNLOAD_URL); \
-    # Install SyncThing
     Invoke-WebRequest -Uri $env:SYNCTHING_DOWNLOAD_URL -OutFile c:\syncthing-windows-amd64.zip
 RUN \
 	Write-Host 'Expanding ...'; \
@@ -15,7 +14,6 @@ RUN \
 RUN \
     Remove-Item -Path c:\syncthing-windows-amd64.zip -Confirm:$False; \
     Rename-Item -Path c:\syncthing-windows-amd64-v$env:SYNCTHING_VERSION -NewName syncthing 
-# PATH isn't actually set in the Docker image, so we have to set it from within the container
 RUN $newPath = ('C:\syncthing;{0}' -f $env:PATH); \
         Write-Host ('Updating PATH: {0}' -f $newPath); \
         setx /M PATH $newPath;
