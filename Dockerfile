@@ -9,7 +9,7 @@ COPY Dockerfile Dockerfile
 RUN Write-Host ('Downloading {0} ...' -f $env:SYNCTHING_DOWNLOAD_URL); \
     Invoke-WebRequest -Uri $env:SYNCTHING_DOWNLOAD_URL -OutFile c:\syncthing-windows-amd64.zip
 RUN \
-	Write-Host 'Expanding ...'; \
+    Write-Host 'Expanding ...'; \
     Expand-Archive -Path c:\syncthing-windows-amd64.zip -DestinationPath C:\ -Force ;
 RUN \
     Remove-Item -Path c:\syncthing-windows-amd64.zip -Confirm:$False; \
