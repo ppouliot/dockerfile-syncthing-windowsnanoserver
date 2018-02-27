@@ -1,0 +1,22 @@
+FROM microsoft/windowsservercore
+LABEL maintainer="peter@pouliot.net"
+
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+COPY VERSION VERSION
+COPY Dockerfile.windowsservercore Dockerfile
+
+RUN \
+    # Install Chocolatey
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+RUN \
+    # Install Choco Package
+    choco install syncthing -Y ; \
+    refreshenv ;
+RUN @('c:/syncthing','c:/syncthing/data','c:/syncthing/config')| foreach { New-Item -Path $_ -ItemType Directory -Force }
+
+VOLUME c:\\syncthing\\config
+VOLUME c:\\syncthing\\data
+EXPOSE 8384 22000 21027/UDP
+RUN c:\\ProgramData\\chocolatey\\bin\\syncthing.exe -no-console -no-browser -generate=c:\\syncthing\\config -home=c:\\syncthing\\config
+ENTRYPOINT c:\\ProgramData\\chocolatey\\bin\\syncthing.exe -no-console -no-browser -home=c:\\syncthing\\config
+

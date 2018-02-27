@@ -1,0 +1,18 @@
+---
+version '3'
+services:
+  syncthing:
+    image: ppouliot/syncthing-windowsnanoserver
+    restart: always
+    ports:
+      - "8384:8384"
+      - "22000:22000"
+      - "21027:21027/udp"
+    volumes:
+      - "c:\syncthing\config:c:\syncthing\config"
+      - "c:\syncthing\data:c:\syncthing\data"
+volumes:
+  config:
+    driver: local
+  data:
+    driver: local
